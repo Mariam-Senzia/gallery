@@ -41,6 +41,7 @@ pipeline {
         stage ('Slack') {
             steps {
                 slackSend channel: 'mariam_ip1', color: 'green', message: 'Deployment was successful'
+                slackSend message: "Build id :${BUILD_ID} | Heroku link :'https://hidden-mesa-66583-bcc6c745b126.herokuapp.com/'"
             }
         }
     }
