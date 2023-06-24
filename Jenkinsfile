@@ -37,6 +37,12 @@ pipeline {
                 } 
             }
         }
+
+        stage ('Slack') {
+            steps {
+                slackSend channel: 'mariam_ip1', color: 'green', message: 'Deployment was successful'
+            }
+        }
     }
 
     post {
