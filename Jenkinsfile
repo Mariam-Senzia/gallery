@@ -41,9 +41,7 @@ pipeline {
 
     post {
         failure {
-            mail to: "mariamsenzia@gmail.com"
-            subject: "Test Email"
-            body: "Test fail"
+            emailext body: 'Test fail', subject: 'Test', to: 'mariamsenzia@gmail.com'
         }
     }
 }    
