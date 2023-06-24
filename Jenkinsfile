@@ -38,4 +38,12 @@ pipeline {
             }
         }
     }
+
+    post {
+        failure {
+            mail to: "mariamsenzia@gmail.com"
+            subject: "Test Email"
+            body: "Test fail"
+        }
+    }
 }    
