@@ -42,9 +42,9 @@ pipeline {
     post {
         failure {
             emailext body: 'Test fail', subject: 'Test', to: 'mariamsenzia@gmail.com'
-        }
+        } 
 
-        sucess {
+        success {
             slackSend channel: 'mariam_ip1', message: "Build id: ${BUILD_ID} | Heroku link :'https://hidden-mesa-66583-bcc6c745b126.herokuapp.com/'"
         }
     }
