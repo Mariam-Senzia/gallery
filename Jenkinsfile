@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build the project') {
             steps {
-                sh 'npm install'
+                sh 'npm build'
             }
         }
         
@@ -37,17 +37,15 @@ pipeline {
                 } 
             }
         }
-
-        stage ('Slack') {
-            steps {
-                slackSend message: "Build id :${BUILD_ID} | Heroku link :'https://hidden-mesa-66583-bcc6c745b126.herokuapp.com/'"
-            }
-        }
     }
 
     post {
         failure {
             emailext body: 'Test fail', subject: 'Test', to: 'mariamsenzia@gmail.com'
+        }
+
+        sucess {
+            slackSend channel: 'mariam_ip1', message: "Build id: ${BUILD_ID} | Heroku link :'https://hidden-mesa-66583-bcc6c745b126.herokuapp.com/'"
         }
     }
 }    
